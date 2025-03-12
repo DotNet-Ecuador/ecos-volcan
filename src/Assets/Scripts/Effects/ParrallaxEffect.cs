@@ -4,38 +4,47 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.Rendering;
 
-public class ParrallaxEffect : MonoBehaviour
-{
-    [SerializeField] private float parallaxMultiplier;
+using System.Collections.Generic;
 
-    private Transform cameraTransForm;
+public class ParallaxEffect : MonoBehaviour
+{
+    [SerializeField] private float parallaxMultiplier = 0.5f; // Velocidad del parallax
+    private Transform cameraTransform;
     private Vector3 previousCameraPosition;
-    private float spriteWidth, startPosition;
+    private float spriteWidth;
 
     void Start()
     {
-        cameraTransForm = Camera.main.transform;
-        previousCameraPosition = cameraTransForm.position;
-        spriteWidth = GetComponent<SpriteRenderer>().bounds.size.x;
-    }
+        cameraTransform = Camera.main.transform;
+        previousCameraPosition = cameraTransform.position;
 
+        // Obtener el ancho del sprite
+        SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
+        if (spriteRenderer != null)
+        {
+            spriteWidth = spriteRenderer.bounds.size.x;
+        }
+    }
 
     void LateUpdate()
     {
-        float deltaX = (cameraTransForm.position.x - previousCameraPosition.x) *parallaxMultiplier;
-        float moveAmount = cameraTransForm.position.x * (1 - parallaxMultiplier);
-        transform.Translate(new Vector3(deltaX, 0, 0));
-        previousCameraPosition = cameraTransForm.position;
+        // Mueve el fondo en función del movimiento de la cámara
+        float deltaX = cameraTransform.position.x - previousCameraPosition.x;
+        transform.position += new Vector3(deltaX * parallaxMultiplier, 0, 0);
+        previousCameraPosition = cameraTransform.position;
 
-        if (moveAmount >  startPosition + spriteWidth)
+        // Calcula el borde izquierdo de la cámara
+        float cameraLeftEdge = cameraTransform.position.x - Camera.main.orthographicSize * Camera.main.aspect;
+
+        // Si el fondo se sale completamente por la izquierda, lo movemos a la derecha
+        if (transform.position.x + spriteWidth / 2 < cameraLeftEdge)
         {
-            transform.Translate(new Vector3(spriteWidth, 0, 0));
-            startPosition += spriteWidth;
-        }
-        else if (moveAmount < startPosition - spriteWidth)
-        {
-            transform.Translate(new Vector3(-spriteWidth, 0, 0));
-            startPosition -= spriteWidth;
+            float cameraRightEdge = cameraTransform.position.x + Camera.main.orthographicSize * Camera.main.aspect;
+            transform.position = new Vector3(cameraRightEdge + spriteWidth / 2, transform.position.y, transform.position.z);
         }
     }
 }
+
+
+
+
