@@ -1,0 +1,734 @@
+fileFormatVersion: 2
+guid: 1d98d672d9dd5fb448f0abefe985ae95
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: AlbedoBase_XL_2D_game_character_sprite_sheet_cartoon_style_sid_3-removebg-preview_0
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 262
+        width: 68
+        height: 88
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 244c4a614c3b16749923f3f829e06dfc
+      internalID: 1929969665
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AlbedoBase_XL_2D_game_character_sprite_sheet_cartoon_style_sid_3-removebg-preview_1
+      rect:
+        serializedVersion: 2
+        x: 78
+        y: 257
+        width: 71
+        height: 93
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ec7f861206cfd2d4d83370720a04b551
+      internalID: -136914345
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AlbedoBase_XL_2D_game_character_sprite_sheet_cartoon_style_sid_3-removebg-preview_2
+      rect:
+        serializedVersion: 2
+        x: 154
+        y: 261
+        width: 69
+        height: 88
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3318014278d129645b7f2324dba220b4
+      internalID: -572675940
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AlbedoBase_XL_2D_game_character_sprite_sheet_cartoon_style_sid_3-removebg-preview_3
+      rect:
+        serializedVersion: 2
+        x: 228
+        y: 261
+        width: 68
+        height: 90
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e71886ae73db6844793ae556696f80f8
+      internalID: 234259988
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AlbedoBase_XL_2D_game_character_sprite_sheet_cartoon_style_sid_3-removebg-preview_4
+      rect:
+        serializedVersion: 2
+        x: 302
+        y: 260
+        width: 72
+        height: 91
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4e9e4174f3f52ee4285770396ec1ac9f
+      internalID: 966436783
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AlbedoBase_XL_2D_game_character_sprite_sheet_cartoon_style_sid_3-removebg-preview_5
+      rect:
+        serializedVersion: 2
+        x: 376
+        y: 261
+        width: 69
+        height: 97
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0d9bfc8a480761e4cb9f0bd45ea06f9d
+      internalID: -2062025027
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AlbedoBase_XL_2D_game_character_sprite_sheet_cartoon_style_sid_3-removebg-preview_6
+      rect:
+        serializedVersion: 2
+        x: 515
+        y: 261
+        width: 71
+        height: 89
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e36c1f9383833bb4988bd1023e1930f1
+      internalID: 2022582944
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AlbedoBase_XL_2D_game_character_sprite_sheet_cartoon_style_sid_3-removebg-preview_7
+      rect:
+        serializedVersion: 2
+        x: 598
+        y: 260
+        width: 66
+        height: 88
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 75318e7f578fff541b4105f860ca75af
+      internalID: 640285133
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AlbedoBase_XL_2D_game_character_sprite_sheet_cartoon_style_sid_3-removebg-preview_8
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 145
+        width: 68
+        height: 97
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 27bf4b4284b08654da4d86f5a321cc62
+      internalID: -1650206607
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AlbedoBase_XL_2D_game_character_sprite_sheet_cartoon_style_sid_3-removebg-preview_9
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 147
+        width: 69
+        height: 93
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ab8a9ff9691f60b48b09afd4c729a14d
+      internalID: 67915840
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AlbedoBase_XL_2D_game_character_sprite_sheet_cartoon_style_sid_3-removebg-preview_10
+      rect:
+        serializedVersion: 2
+        x: 152
+        y: 148
+        width: 67
+        height: 93
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e69004cb02ffa4948a525d96f1337f26
+      internalID: 1194428545
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AlbedoBase_XL_2D_game_character_sprite_sheet_cartoon_style_sid_3-removebg-preview_11
+      rect:
+        serializedVersion: 2
+        x: 228
+        y: 148
+        width: 69
+        height: 93
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0200f78de8deb6640b2803fd03c2c678
+      internalID: 662441374
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AlbedoBase_XL_2D_game_character_sprite_sheet_cartoon_style_sid_3-removebg-preview_12
+      rect:
+        serializedVersion: 2
+        x: 305
+        y: 147
+        width: 66
+        height: 93
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: afbe715d54bb0cd44b2e11ca2d11d286
+      internalID: -781674527
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AlbedoBase_XL_2D_game_character_sprite_sheet_cartoon_style_sid_3-removebg-preview_13
+      rect:
+        serializedVersion: 2
+        x: 376
+        y: 148
+        width: 70
+        height: 92
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1c7ec856d413c5a4ab2df7f773acd513
+      internalID: 1914326853
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AlbedoBase_XL_2D_game_character_sprite_sheet_cartoon_style_sid_3-removebg-preview_14
+      rect:
+        serializedVersion: 2
+        x: 444
+        y: 146
+        width: 69
+        height: 93
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ab3016f04748409428ce6f5125c08589
+      internalID: 1450943502
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AlbedoBase_XL_2D_game_character_sprite_sheet_cartoon_style_sid_3-removebg-preview_15
+      rect:
+        serializedVersion: 2
+        x: 511
+        y: 146
+        width: 73
+        height: 92
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 61514ad020b37e045a9a6832cb0c8cef
+      internalID: -63608567
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AlbedoBase_XL_2D_game_character_sprite_sheet_cartoon_style_sid_3-removebg-preview_16
+      rect:
+        serializedVersion: 2
+        x: 584
+        y: 145
+        width: 73
+        height: 92
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c9652909d5dc01245bca61489cbc8f0d
+      internalID: -1779040799
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AlbedoBase_XL_2D_game_character_sprite_sheet_cartoon_style_sid_3-removebg-preview_17
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 24
+        width: 65
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cf2cfc026d505a446b4e04908ca1adea
+      internalID: 1627205724
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AlbedoBase_XL_2D_game_character_sprite_sheet_cartoon_style_sid_3-removebg-preview_18
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 25
+        width: 69
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3e81bbdbc0ffc104ba3e57715adf899a
+      internalID: 1528700145
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AlbedoBase_XL_2D_game_character_sprite_sheet_cartoon_style_sid_3-removebg-preview_19
+      rect:
+        serializedVersion: 2
+        x: 138
+        y: 26
+        width: 69
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d1e99410d81cb3d4eac16485b158616b
+      internalID: 254776793
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AlbedoBase_XL_2D_game_character_sprite_sheet_cartoon_style_sid_3-removebg-preview_20
+      rect:
+        serializedVersion: 2
+        x: 211
+        y: 24
+        width: 79
+        height: 99
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: abcbce5a9d19dd347821bb1fe999129f
+      internalID: 1117351190
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AlbedoBase_XL_2D_game_character_sprite_sheet_cartoon_style_sid_3-removebg-preview_21
+      rect:
+        serializedVersion: 2
+        x: 287
+        y: 24
+        width: 75
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3edd2a16d1f98054ea2f24e1e6f8f22b
+      internalID: 589378978
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AlbedoBase_XL_2D_game_character_sprite_sheet_cartoon_style_sid_3-removebg-preview_22
+      rect:
+        serializedVersion: 2
+        x: 357
+        y: 27
+        width: 71
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e53b23119f32da04492b7b9c5f51ae4b
+      internalID: 691798926
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AlbedoBase_XL_2D_game_character_sprite_sheet_cartoon_style_sid_3-removebg-preview_23
+      rect:
+        serializedVersion: 2
+        x: 429
+        y: 25
+        width: 70
+        height: 99
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aa329a26500122640bc2e7047ea9d632
+      internalID: 145593000
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AlbedoBase_XL_2D_game_character_sprite_sheet_cartoon_style_sid_3-removebg-preview_24
+      rect:
+        serializedVersion: 2
+        x: 504
+        y: 24
+        width: 78
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f167532bdc3efdf4ba732df80d7554ca
+      internalID: 1333082713
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AlbedoBase_XL_2D_game_character_sprite_sheet_cartoon_style_sid_3-removebg-preview_25
+      rect:
+        serializedVersion: 2
+        x: 582
+        y: 25
+        width: 82
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 437fe866d6fa35644810656a5511725d
+      internalID: 1338313896
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AlbedoBase_XL_2D_game_character_sprite_sheet_cartoon_style_sid_3-removebg-preview_26
+      rect:
+        serializedVersion: 2
+        x: 447
+        y: 262
+        width: 67
+        height: 88
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9bdeded8f8a200b4bae43257f2525044
+      internalID: 1783233434
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      AlbedoBase_XL_2D_game_character_sprite_sheet_cartoon_style_sid_3-removebg-preview_0: 1929969665
+      AlbedoBase_XL_2D_game_character_sprite_sheet_cartoon_style_sid_3-removebg-preview_1: -136914345
+      AlbedoBase_XL_2D_game_character_sprite_sheet_cartoon_style_sid_3-removebg-preview_10: 1194428545
+      AlbedoBase_XL_2D_game_character_sprite_sheet_cartoon_style_sid_3-removebg-preview_11: 662441374
+      AlbedoBase_XL_2D_game_character_sprite_sheet_cartoon_style_sid_3-removebg-preview_12: -781674527
+      AlbedoBase_XL_2D_game_character_sprite_sheet_cartoon_style_sid_3-removebg-preview_13: 1914326853
+      AlbedoBase_XL_2D_game_character_sprite_sheet_cartoon_style_sid_3-removebg-preview_14: 1450943502
+      AlbedoBase_XL_2D_game_character_sprite_sheet_cartoon_style_sid_3-removebg-preview_15: -63608567
+      AlbedoBase_XL_2D_game_character_sprite_sheet_cartoon_style_sid_3-removebg-preview_16: -1779040799
+      AlbedoBase_XL_2D_game_character_sprite_sheet_cartoon_style_sid_3-removebg-preview_17: 1627205724
+      AlbedoBase_XL_2D_game_character_sprite_sheet_cartoon_style_sid_3-removebg-preview_18: 1528700145
+      AlbedoBase_XL_2D_game_character_sprite_sheet_cartoon_style_sid_3-removebg-preview_19: 254776793
+      AlbedoBase_XL_2D_game_character_sprite_sheet_cartoon_style_sid_3-removebg-preview_2: -572675940
+      AlbedoBase_XL_2D_game_character_sprite_sheet_cartoon_style_sid_3-removebg-preview_20: 1117351190
+      AlbedoBase_XL_2D_game_character_sprite_sheet_cartoon_style_sid_3-removebg-preview_21: 589378978
+      AlbedoBase_XL_2D_game_character_sprite_sheet_cartoon_style_sid_3-removebg-preview_22: 691798926
+      AlbedoBase_XL_2D_game_character_sprite_sheet_cartoon_style_sid_3-removebg-preview_23: 145593000
+      AlbedoBase_XL_2D_game_character_sprite_sheet_cartoon_style_sid_3-removebg-preview_24: 1333082713
+      AlbedoBase_XL_2D_game_character_sprite_sheet_cartoon_style_sid_3-removebg-preview_25: 1338313896
+      AlbedoBase_XL_2D_game_character_sprite_sheet_cartoon_style_sid_3-removebg-preview_26: 1783233434
+      AlbedoBase_XL_2D_game_character_sprite_sheet_cartoon_style_sid_3-removebg-preview_3: 234259988
+      AlbedoBase_XL_2D_game_character_sprite_sheet_cartoon_style_sid_3-removebg-preview_4: 966436783
+      AlbedoBase_XL_2D_game_character_sprite_sheet_cartoon_style_sid_3-removebg-preview_5: -2062025027
+      AlbedoBase_XL_2D_game_character_sprite_sheet_cartoon_style_sid_3-removebg-preview_6: 2022582944
+      AlbedoBase_XL_2D_game_character_sprite_sheet_cartoon_style_sid_3-removebg-preview_7: 640285133
+      AlbedoBase_XL_2D_game_character_sprite_sheet_cartoon_style_sid_3-removebg-preview_8: -1650206607
+      AlbedoBase_XL_2D_game_character_sprite_sheet_cartoon_style_sid_3-removebg-preview_9: 67915840
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

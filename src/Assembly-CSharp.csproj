@@ -65,9 +65,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\PLayerMoviment.cs" />
+    <Compile Include="Assets\Scripts\BulletScript.cs" />
     <Compile Include="Assets\Scripts\SkyFollow.cs" />
     <Compile Include="Assets\Scripts\Effects\ParrallaxEffect.cs" />
     <Compile Include="Assets\Scripts\CheckGround.cs" />
+    <Compile Include="Assets\Scripts\FollowRightWall.cs" />
     <Compile Include="Assets\Scripts\CameraFollow.cs" />
   </ItemGroup>
   <ItemGroup>

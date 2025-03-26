@@ -2,24 +2,28 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InstantCameraFollow : MonoBehaviour
+public class CameraFollow : MonoBehaviour
 {
-    public Transform target; // Referencia al objeto que la cámara seguirá
-    public Vector3 offset; // Desplazamiento de la cámara respecto al objetivo
+    public Transform player; // Referencia al jugador
+    public float speed = 2.0f; // Velocidad con la que la cámara se mueve
+
+    private float minX; // Límite mínimo de la cámara (para evitar que retroceda)
+
+    void Start()
+    {
+        if (player != null)
+        {
+            minX = transform.position.x; // La posición inicial de la cámara es el límite mínimo
+        }
+    }
 
     void LateUpdate()
     {
-        // Verifica que el target no sea null
-        if (target == null)
-        {
-            Debug.LogWarning("Target no asignado. La cámara no puede seguir a ningún objeto.");
-            return;
-        }
+        if (player == null) return; // Si no hay jugador, salir
 
-        // Calcular la nueva posición de la cámara
-        Vector3 desiredPosition = target.position + offset;
+        float targetX = Mathf.Max(minX, player.position.x); // Asegura que la cámara solo se mueva hacia adelante
+        transform.position = new Vector3(targetX, transform.position.y, transform.position.z); // Mueve solo en X
 
-        // Actualizar la posición de la cámara de inmediato
-        transform.position = desiredPosition;
+        minX = transform.position.x; // Actualiza el límite mínimo
     }
 }
