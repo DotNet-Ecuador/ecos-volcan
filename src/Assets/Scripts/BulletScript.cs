@@ -13,7 +13,7 @@ public class BulletScript : MonoBehaviour
     public void SetDirection(Vector2 newDirection)
     {
         direction = newDirection.normalized;  // Asegura que la dirección esté normalizada
-        Destroy(gameObject, 3f);  // Destruir la bala después de 3 segundos
+       // Destroy(gameObject, 3f);  // Destruir la bala después de 3 segundos
     }
 
     void Start()
@@ -25,5 +25,25 @@ public class BulletScript : MonoBehaviour
     {
         // Mueve la bala en la dirección establecida, con la velocidad especificada
         rb2d.velocity = direction * Speed;
+    }
+
+    public void DestroyBullet()
+    {
+        Destroy(gameObject);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        PlayerMovement player = collision.GetComponent<PlayerMovement>();
+        EnemyScript enemy = collision.GetComponent<EnemyScript>();
+        if (player != null )
+        {
+            player.Hit();
+        }
+        if (enemy != null)
+        {
+            enemy.Hit();
+        }
+        DestroyBullet();
     }
 }
