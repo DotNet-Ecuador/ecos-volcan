@@ -1,4 +1,4 @@
-using System.Collections;
+Ôªøusing System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,6 +6,8 @@ public class EnemyScript : MonoBehaviour
 {
     public GameObject Player;
     public GameObject BulletPrefab;
+    public float speed = 2.0f; // Velocidad de movimiento del enemigo
+    public float followDistance = 1.5f; // Distancia m√≠nima para detenerse
 
     private float lastShootTime;
     private float shootCooldown = 1.5f; // Tiempo entre disparos en segundos
@@ -13,38 +15,47 @@ public class EnemyScript : MonoBehaviour
 
     void Update()
     {
-        if (Player == null) return; // Evita errores si el Player no est· asignado
+        if (Player == null) return;
 
         Vector3 direction = Player.transform.position - transform.position;
 
-        // Ajustar la direcciÛn en la escala del enemigo sin cambiar el tamaÒo
+        // Ajusta la escala para mirar hacia el jugador
         Vector3 newScale = transform.localScale;
         newScale.x = (direction.x >= 0.0f) ? Mathf.Abs(newScale.x) : -Mathf.Abs(newScale.x);
         transform.localScale = newScale;
 
         float distance = Mathf.Abs(Player.transform.position.x - transform.position.x);
 
-        // Disparar solo si ha pasado el tiempo del cooldown
+        // Moverse hacia el jugador si est√° lejos
+        if (distance > followDistance)
+        {
+            transform.position += new Vector3(Mathf.Sign(direction.x) * speed * Time.deltaTime, 0, 0);
+        }
+
+        // Disparar si est√° cerca y ha pasado el cooldown
         if (distance < 5.0f && Time.time >= lastShootTime + shootCooldown)
         {
             Shoot();
-            lastShootTime = Time.time; // Actualiza el ˙ltimo disparo
+            lastShootTime = Time.time;
         }
     }
 
     private void Shoot()
     {
-        // La direcciÛn del disparo ahora depende de la escala del enemigo
         float shootDirection = Mathf.Sign(transform.localScale.x);
         Vector3 direction = new Vector3(shootDirection, 0, 0);
 
         GameObject bullet = Instantiate(BulletPrefab, transform.position + direction * 0.5f, Quaternion.identity);
-        bullet.GetComponent<BulletScript>().SetDirection(direction);
+
+        // Establece la direcci√≥n y marca como bala enemiga
+        BulletScript bulletScript = bullet.GetComponent<BulletScript>();
+        bulletScript.SetDirection(direction);
+        bulletScript.isEnemyBullet = true; // ‚Üê Aqu√≠ lo marcamos como bala enemiga
     }
 
     public void Hit()
     {
-        Health = Health - 1;
-        if (Health == 0) Destroy(gameObject);
+        Health -= 1;
+        if (Health <= 0) Destroy(gameObject);
     }
 }

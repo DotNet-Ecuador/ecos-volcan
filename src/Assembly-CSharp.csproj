@@ -62,17 +62,14 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\BulletScript.cs" />
     <Compile Include="Assets\Scripts\SkyFollow.cs" />
+    <Compile Include="Assets\Scripts\FruitItem.cs" />
+    <Compile Include="Assets\Scripts\HUDManager.cs" />
     <Compile Include="Assets\Scripts\Effects\ParrallaxEffect.cs" />
     <Compile Include="Assets\Scripts\PlayerMovement.cs" />
     <Compile Include="Assets\Scripts\CheckGround.cs" />
     <Compile Include="Assets\Scripts\EnemyScript.cs" />
     <Compile Include="Assets\Scripts\CameraFollow.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Assets\Recursos\10 Fresh Game Backgrounds\readme.txt" />
-    <None Include="Assets\Recursos\Game Background Train\Document.txt" />
-    <None Include="Assets\Recursos\Game Background Street\Document.txt" />
-    <None Include="Assets\Recursos\10 Modern Game Backgrounds\readme.txt" />
+    <Compile Include="Assets\Scripts\OneWayPlatform.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

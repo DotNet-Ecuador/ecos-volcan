@@ -4,26 +4,24 @@ using UnityEngine;
 
 public class BulletScript : MonoBehaviour
 {
-    public float Speed = 5f;  // Velocidad de la bala
+    public float Speed = 5f;
+    public bool isEnemyBullet = false; // Define si la bala es enemiga
 
     private Rigidbody2D rb2d;
     private Vector2 direction;
 
-    // Método para establecer la dirección de la bala
     public void SetDirection(Vector2 newDirection)
     {
-        direction = newDirection.normalized;  // Asegura que la dirección esté normalizada
-       // Destroy(gameObject, 3f);  // Destruir la bala después de 3 segundos
+        direction = newDirection.normalized;
     }
 
     void Start()
     {
-        rb2d = GetComponent<Rigidbody2D>();  // Obtener el componente Rigidbody2D
+        rb2d = GetComponent<Rigidbody2D>();
     }
 
     void Update()
     {
-        // Mueve la bala en la dirección establecida, con la velocidad especificada
         rb2d.velocity = direction * Speed;
     }
 
@@ -34,16 +32,25 @@ public class BulletScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        PlayerMovement player = collision.GetComponent<PlayerMovement>();
-        EnemyScript enemy = collision.GetComponent<EnemyScript>();
-        if (player != null )
+        if (isEnemyBullet)
         {
-            player.Hit();
+            // Si es bala enemiga, daña al jugador
+            PlayerMovement player = collision.GetComponent<PlayerMovement>();
+            if (player != null)
+            {
+                player.Hit();
+                DestroyBullet();
+            }
         }
-        if (enemy != null)
+        else
         {
-            enemy.Hit();
+            // Si es bala del jugador, daña a enemigos
+            EnemyScript enemy = collision.GetComponent<EnemyScript>();
+            if (enemy != null)
+            {
+                enemy.Hit();
+                DestroyBullet();
+            }
         }
-        DestroyBullet();
     }
 }

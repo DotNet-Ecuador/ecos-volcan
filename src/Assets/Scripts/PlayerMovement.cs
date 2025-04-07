@@ -7,6 +7,11 @@ public class PlayerMovement : MonoBehaviour
     public GameObject BulletPrefab;
     public float runSpeed = 2;
     public float jumpSpeed = 3;
+    public float health = 100f;
+    public float maxHealth = 100f;
+    public int ammo = 10;
+    public int score = 0; // Puntaje actual del jugador
+
 
     private Rigidbody2D rb2d;
     private Animator animator;
@@ -15,13 +20,18 @@ public class PlayerMovement : MonoBehaviour
     private float Horizontal;
     private bool Grounded;
     private float LastShoot;
-    private int Health = 5;
+
+    // Referencia al HUDManager
+    private HUDManager hudManager;
 
     void Start()
     {
         rb2d = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+
+        // Buscar HUDManager en la escena
+        hudManager = FindObjectOfType<HUDManager>();
     }
 
     private void FixedUpdate()
@@ -50,7 +60,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         // Salto
-        if ((Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow)) 
+        if ((Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
             && CheckGround.isGrounded)
         {
             rb2d.velocity = new Vector2(rb2d.velocity.x, jumpSpeed);
@@ -66,15 +76,39 @@ public class PlayerMovement : MonoBehaviour
 
     private void Shoot()
     {
-        Vector3 direction = (transform.localScale.x == 1) ? Vector2.right : Vector2.left;
-        GameObject bullet = Instantiate(BulletPrefab, transform.position + direction * 0.5f, Quaternion.identity);
-        bullet.GetComponent<BulletScript>().SetDirection(direction);
+        if (ammo > 0) // Dispara solo si hay balas
+        {
+            ammo--;
+
+            // Llamar a HUDManager para actualizar la UI
+            if (hudManager != null)
+            {
+                hudManager.UpdateHUD(); // Actualiza la barra de vida y munición
+            }
+            else
+            {
+                Debug.LogWarning("HUDManager no encontrado");
+            }
+
+            Vector3 direction = (transform.localScale.x == 1) ? Vector2.right : Vector2.left;
+            GameObject bullet = Instantiate(BulletPrefab, transform.position + direction * 0.5f, Quaternion.identity);
+            bullet.GetComponent<BulletScript>().SetDirection(direction);
+        }
     }
 
     public void Hit()
     {
-        Health = Health - 1;
-        if (Health == 0) Destroy(gameObject);
+        health -= 10;
+        if (health <= 0) Destroy(gameObject);
     }
-}
+    public void AddScore(int amount)
+    {
+        score += amount;
 
+        if (hudManager != null)
+        {
+            hudManager.UpdateHUD(); // Actualiza la UI
+        }
+    }
+
+}
