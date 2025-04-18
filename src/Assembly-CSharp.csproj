@@ -61,6 +61,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\BulletScript.cs" />
+    <Compile Include="Assets\Scripts\ChangeWeapon.cs" />
     <Compile Include="Assets\Scripts\SkyFollow.cs" />
     <Compile Include="Assets\Scripts\FruitItem.cs" />
     <Compile Include="Assets\Scripts\HUDManager.cs" />

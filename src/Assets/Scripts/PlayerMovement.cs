@@ -1,17 +1,23 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Unity.Burst.CompilerServices;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
     public GameObject BulletPrefab;
+    public GameObject PowerBulletPrefab;
     public float runSpeed = 2;
     public float jumpSpeed = 3;
     public float health = 100f;
     public float maxHealth = 100f;
     public int ammo = 10;
-    public int score = 0; // Puntaje actual del jugador
+    public int score = 0;
+    public float meleeDamage = 10f; // Daño cuerpo a cuerpo
 
+
+    public Collider2D meleeDetectionZone; // Zona de ataque cuerpo a cuerpo
+    public LayerMask enemyLayer; // Layer de enemigos para detectar
 
     private Rigidbody2D rb2d;
     private Animator animator;
@@ -21,7 +27,6 @@ public class PlayerMovement : MonoBehaviour
     private bool Grounded;
     private float LastShoot;
 
-    // Referencia al HUDManager
     private HUDManager hudManager;
 
     void Start()
@@ -30,7 +35,6 @@ public class PlayerMovement : MonoBehaviour
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
 
-        // Buscar HUDManager en la escena
         hudManager = FindObjectOfType<HUDManager>();
     }
 
@@ -41,59 +45,89 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        // Capturar movimiento horizontal
         Horizontal = Input.GetAxisRaw("Horizontal");
 
-        // Configurar dirección del sprite
         if (Horizontal < 0.0f)
             transform.localScale = new Vector3(-1.0f, 1.0f, 1.0f);
         else if (Horizontal > 0.0f)
             transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
 
-        // Configurar animación: Idle cuando no hay movimiento
         float speedValue = Mathf.Abs(Horizontal * runSpeed);
         animator.SetFloat("Speed", speedValue);
 
         if (speedValue == 0)
-        {
-            animator.Play("Idle"); // Asegura que la animación de Idle se ejecute
-        }
+            animator.Play("Idle");
 
-        // Salto
-        if ((Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
-            && CheckGround.isGrounded)
+        if ((Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow)) && CheckGround.isGrounded)
         {
             rb2d.velocity = new Vector2(rb2d.velocity.x, jumpSpeed);
         }
 
-        // Disparo
         if (Input.GetKey("space") && Time.time > LastShoot + 0.25f)
         {
-            Shoot();
+            if (IsEnemyNearby())
+            {
+                MeleeAttack(); // Ataque cuerpo a cuerpo si hay un enemigo cerca
+            }
+            else
+            {
+                Shoot(); // Disparo normal o de poder
+            }
+
             LastShoot = Time.time;
         }
     }
 
     private void Shoot()
     {
-        if (ammo > 0) // Dispara solo si hay balas
+        if (ammo > 0)
         {
             ammo--;
 
-            // Llamar a HUDManager para actualizar la UI
             if (hudManager != null)
-            {
-                hudManager.UpdateHUD(); // Actualiza la barra de vida y munición
-            }
-            else
-            {
-                Debug.LogWarning("HUDManager no encontrado");
-            }
+                hudManager.UpdateHUD();
 
             Vector3 direction = (transform.localScale.x == 1) ? Vector2.right : Vector2.left;
-            GameObject bullet = Instantiate(BulletPrefab, transform.position + direction * 0.5f, Quaternion.identity);
+            GameObject bulletToUse = (score >= 40 && PowerBulletPrefab != null) ? PowerBulletPrefab : BulletPrefab;
+
+            GameObject bullet = Instantiate(bulletToUse, transform.position + direction * 0.5f, Quaternion.identity);
             bullet.GetComponent<BulletScript>().SetDirection(direction);
         }
+    }
+
+    private bool IsEnemyNearby()
+    {
+        if (meleeDetectionZone == null) return false;
+
+        Collider2D[] hits = Physics2D.OverlapBoxAll(
+            meleeDetectionZone.bounds.center,
+            meleeDetectionZone.bounds.size,
+            0f,
+            enemyLayer
+        );
+
+        return hits.Length > 0;
+    }
+
+    private void MeleeAttack()
+    {
+        Collider2D[] enemies = Physics2D.OverlapBoxAll(
+            meleeDetectionZone.bounds.center,
+            meleeDetectionZone.bounds.size,
+            0f,
+            enemyLayer
+        );
+
+        foreach (Collider2D enemy in enemies)
+        {
+            EnemyScript enemyScript = enemy.GetComponent<EnemyScript>();
+            if (enemyScript != null)
+            {
+                enemyScript.TakeDamage(meleeDamage); // Le pasas el daño
+            }
+        }
+
+        Debug.Log("¡Ataque cuerpo a cuerpo ejecutado!");
     }
 
     public void Hit()
@@ -101,14 +135,28 @@ public class PlayerMovement : MonoBehaviour
         health -= 10;
         if (health <= 0) Destroy(gameObject);
     }
+
     public void AddScore(int amount)
     {
+        int previousScore = score;
         score += amount;
 
-        if (hudManager != null)
+        if (previousScore < 40 && score >= 40)
         {
-            hudManager.UpdateHUD(); // Actualiza la UI
+            ammo += 60; // Regala 60 balas al activar modo de poder
+            Debug.Log("¡Modo de poder activado! +60 balas");
         }
+
+        if (hudManager != null)
+            hudManager.UpdateHUD();
     }
 
+    private void OnDrawGizmosSelected()
+    {
+        if (meleeDetectionZone != null)
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireCube(meleeDetectionZone.bounds.center, meleeDetectionZone.bounds.size);
+        }
+    }
 }

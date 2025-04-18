@@ -48,7 +48,7 @@ public class BulletScript : MonoBehaviour
             EnemyScript enemy = collision.GetComponent<EnemyScript>();
             if (enemy != null)
             {
-                enemy.Hit();
+                enemy.TakeDamage(1);
                 DestroyBullet();
             }
         }

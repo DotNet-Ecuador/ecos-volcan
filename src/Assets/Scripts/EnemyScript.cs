@@ -52,10 +52,11 @@ public class EnemyScript : MonoBehaviour
         bulletScript.SetDirection(direction);
         bulletScript.isEnemyBullet = true; // ← Aquí lo marcamos como bala enemiga
     }
-
-    public void Hit()
+    public void TakeDamage(float amount)
     {
-        Health -= 1;
+        Health -= Mathf.RoundToInt(amount); // Redondea el daño si lo deseas como entero
         if (Health <= 0) Destroy(gameObject);
     }
+
+
 }
