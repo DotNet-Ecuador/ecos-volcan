@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Unity.Burst.CompilerServices;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class PlayerMovement : MonoBehaviour
 {
     public GameObject BulletPrefab;
@@ -14,7 +14,9 @@ public class PlayerMovement : MonoBehaviour
     public int ammo = 10;
     public int score = 0;
     public float meleeDamage = 10f; // Daño cuerpo a cuerpo
-
+    public Image progressBar; // Esta es tu barra de progreso
+    public UIDamageDisplay damageDisplay;
+    public Image healthBar; // Barra de vida
 
     public Collider2D meleeDetectionZone; // Zona de ataque cuerpo a cuerpo
     public LayerMask enemyLayer; // Layer de enemigos para detectar
@@ -26,6 +28,9 @@ public class PlayerMovement : MonoBehaviour
     private float Horizontal;
     private bool Grounded;
     private float LastShoot;
+
+    private float progress = 0f;
+    private float maxProgress = 100f;
 
     private HUDManager hudManager;
 
@@ -112,18 +117,21 @@ public class PlayerMovement : MonoBehaviour
     private void MeleeAttack()
     {
         Collider2D[] enemies = Physics2D.OverlapBoxAll(
-            meleeDetectionZone.bounds.center,
-            meleeDetectionZone.bounds.size,
-            0f,
-            enemyLayer
-        );
+        meleeDetectionZone.bounds.center,
+        meleeDetectionZone.bounds.size,
+        0f,
+        enemyLayer
+    );
 
         foreach (Collider2D enemy in enemies)
         {
             EnemyScript enemyScript = enemy.GetComponent<EnemyScript>();
             if (enemyScript != null)
             {
-                enemyScript.TakeDamage(meleeDamage); // Le pasas el daño
+                enemyScript.TakeDamage(meleeDamage);
+
+                // 🟢 Añade progreso al hacer daño cuerpo a cuerpo
+                AddProgress(10f); // Puedes ajustar este valor
             }
         }
 
@@ -133,7 +141,16 @@ public class PlayerMovement : MonoBehaviour
     public void Hit()
     {
         health -= 10;
-        if (health <= 0) Destroy(gameObject);
+
+        if (damageDisplay != null)
+        {
+            damageDisplay.QuitarVida(); // Oculta una vida visual
+        }
+
+        if (health <= 0)
+        {
+            Destroy(gameObject); // Destruye al jugador si su vida numérica llega a 0
+        }
     }
 
     public void AddScore(int amount)
@@ -150,6 +167,19 @@ public class PlayerMovement : MonoBehaviour
         if (hudManager != null)
             hudManager.UpdateHUD();
     }
+
+    public void AddProgress(float amount)
+    {
+        progress += amount;
+
+        // Limita el valor máximo
+        progress = Mathf.Clamp(progress, 0, maxProgress);
+
+        // Actualiza visualmente
+        if (progressBar != null)
+            progressBar.fillAmount = progress / maxProgress;
+    }
+
 
     private void OnDrawGizmosSelected()
     {

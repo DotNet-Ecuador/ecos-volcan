@@ -64,8 +64,10 @@
     <Compile Include="Assets\Scripts\ChangeWeapon.cs" />
     <Compile Include="Assets\Scripts\SkyFollow.cs" />
     <Compile Include="Assets\Scripts\FruitItem.cs" />
+    <Compile Include="Assets\Scripts\UIDamageDisplay.cs" />
     <Compile Include="Assets\Scripts\HUDManager.cs" />
     <Compile Include="Assets\Scripts\Effects\ParrallaxEffect.cs" />
+    <Compile Include="Assets\Scripts\CameraShake.cs" />
     <Compile Include="Assets\Scripts\PlayerMovement.cs" />
     <Compile Include="Assets\Scripts\CheckGround.cs" />
     <Compile Include="Assets\Scripts\EnemyScript.cs" />

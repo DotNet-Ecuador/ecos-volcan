@@ -34,7 +34,7 @@ public class BulletScript : MonoBehaviour
     {
         if (isEnemyBullet)
         {
-            // Si es bala enemiga, da�a al jugador
+            // Si es bala enemiga, daña al jugador
             PlayerMovement player = collision.GetComponent<PlayerMovement>();
             if (player != null)
             {
@@ -44,13 +44,22 @@ public class BulletScript : MonoBehaviour
         }
         else
         {
-            // Si es bala del jugador, da�a a enemigos
+            // Si es bala del jugador, daña a enemigos
             EnemyScript enemy = collision.GetComponent<EnemyScript>();
             if (enemy != null)
             {
                 enemy.TakeDamage(1);
+
+                // 🟢 Solo aquí sumamos progreso porque fue un impacto válido
+                HUDManager hud = FindObjectOfType<HUDManager>();
+                if (hud != null)
+                {
+                    hud.AddProgress(10); // Puedes ajustar esta cantidad
+                }
+
                 DestroyBullet();
             }
         }
     }
+
 }
