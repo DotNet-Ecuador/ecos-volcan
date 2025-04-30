@@ -17,6 +17,7 @@ public class PlayerMovement : MonoBehaviour
     public Image progressBar; // Esta es tu barra de progreso
     public UIDamageDisplay damageDisplay;
     public Image healthBar; // Barra de vida
+    public GameObject meleeEffectPrefab;
 
     public Collider2D meleeDetectionZone; // Zona de ataque cuerpo a cuerpo
     public LayerMask enemyLayer; // Layer de enemigos para detectar
@@ -31,6 +32,7 @@ public class PlayerMovement : MonoBehaviour
 
     private float progress = 0f;
     private float maxProgress = 100f;
+    private bool tieneMascara = false;
 
     private HUDManager hudManager;
 
@@ -83,8 +85,20 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Mascara"))
+        {
+            tieneMascara = true;
+            Destroy(other.gameObject);
+        }
+    }
+
     private void Shoot()
     {
+        if (tieneMascara)
+            return;
+
         if (ammo > 0)
         {
             ammo--;
@@ -99,7 +113,6 @@ public class PlayerMovement : MonoBehaviour
             bullet.GetComponent<BulletScript>().SetDirection(direction);
         }
     }
-
     private bool IsEnemyNearby()
     {
         if (meleeDetectionZone == null) return false;
@@ -116,12 +129,24 @@ public class PlayerMovement : MonoBehaviour
 
     private void MeleeAttack()
     {
+        if (tieneMascara)
+            return;
+
         Collider2D[] enemies = Physics2D.OverlapBoxAll(
-        meleeDetectionZone.bounds.center,
-        meleeDetectionZone.bounds.size,
-        0f,
-        enemyLayer
-    );
+            meleeDetectionZone.bounds.center,
+            meleeDetectionZone.bounds.size,
+            0f,
+            enemyLayer
+     );
+
+        // 🟢 Instancia el prefab de animación (slash, golpe visual, etc.)
+        if (meleeEffectPrefab != null)
+        {
+            Debug.Log("Instanciando efecto de melee");
+            GameObject effect = Instantiate(meleeEffectPrefab, transform.position, Quaternion.identity);
+            Destroy(effect, 1.5f); // Se destruye automáticamente
+        }
+
 
         foreach (Collider2D enemy in enemies)
         {
@@ -129,14 +154,12 @@ public class PlayerMovement : MonoBehaviour
             if (enemyScript != null)
             {
                 enemyScript.TakeDamage(meleeDamage);
-
-                // 🟢 Añade progreso al hacer daño cuerpo a cuerpo
-                AddProgress(10f); // Puedes ajustar este valor
             }
         }
 
         Debug.Log("¡Ataque cuerpo a cuerpo ejecutado!");
     }
+
 
     public void Hit()
     {

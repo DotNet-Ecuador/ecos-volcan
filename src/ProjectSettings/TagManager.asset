@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Background
   - Enemy
+  - Mascara
   layers:
   - Default
   - TransparentFX
@@ -16,7 +17,7 @@ TagManager:
   - Enemy
   - Platform
   - Bala
-  - 
+  - Vida
   - 
   - 
   - 
@@ -60,4 +61,7 @@ TagManager:
     locked: 0
   - name: Player
     uniqueID: 2106688423
+    locked: 0
+  - name: Poderes
+    uniqueID: 6186723
     locked: 0
