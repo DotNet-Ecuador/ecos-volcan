@@ -73,6 +73,8 @@
     <Compile Include="Assets\Scripts\ObtenerMascara.cs" />
     <Compile Include="Assets\Scripts\CheckGround.cs" />
     <Compile Include="Assets\Scripts\ObjetosDecorativos.cs" />
+    <Compile Include="Assets\Scripts\Vacio.cs" />
+    <Compile Include="Assets\Scripts\PlataformaDestructible.cs" />
     <Compile Include="Assets\Scripts\EnemyScript.cs" />
     <Compile Include="Assets\Scripts\CameraFollow.cs" />
     <Compile Include="Assets\Scripts\OneWayPlatform.cs" />
