@@ -11,9 +11,23 @@ public class BulletScript : MonoBehaviour
     private Vector2 direction;
 
     public void SetDirection(Vector2 newDirection)
+{
+    direction = newDirection.normalized;
+
+    // Invertir la escala para que el sprite se oriente correctamente
+    if (newDirection.x < 0)
     {
-        direction = newDirection.normalized;
+        // Mira a la izquierda (ya lo hace por defecto)
+        transform.localScale = new Vector3(1f, transform.localScale.y, transform.localScale.z);
     }
+    else if (newDirection.x > 0)
+    {
+        // Volteamos horizontalmente para que mire a la derecha
+        transform.localScale = new Vector3(-1f, transform.localScale.y, transform.localScale.z);
+    }
+}
+
+
 
     void Start()
     {

@@ -66,8 +66,10 @@
     <Compile Include="Assets\Scripts\FruitItem.cs" />
     <Compile Include="Assets\Scripts\FuegoMascara.cs" />
     <Compile Include="Assets\Scripts\UIDamageDisplay.cs" />
+    <Compile Include="Assets\Scripts\FlipCharacter.cs" />
     <Compile Include="Assets\Scripts\HUDManager.cs" />
     <Compile Include="Assets\Scripts\Effects\ParrallaxEffect.cs" />
+    <Compile Include="Assets\Scripts\PlayerController.cs" />
     <Compile Include="Assets\Scripts\CameraShake.cs" />
     <Compile Include="Assets\Scripts\PlayerMovement.cs" />
     <Compile Include="Assets\Scripts\ObtenerMascara.cs" />
