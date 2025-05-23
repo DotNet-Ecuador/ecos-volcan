@@ -13,10 +13,16 @@ public class ObtenerMascara : MonoBehaviour
     public float distancia = 1f;
 
     private bool tieneMascara = false;
+    private PlayerMovement playerMovement;
+
+    void Start()
+    {
+        playerMovement = GetComponent<PlayerMovement>();
+    }
 
     void Update()
     {
-        if (tieneMascara && Input.GetKeyDown(KeyCode.Space))
+        if (tieneMascara && Input.GetKeyDown(KeyCode.Space) && playerMovement != null && CheckGround.isGrounded)
         {
             InstanciarObjetoDelante();
         }
@@ -24,20 +30,35 @@ public class ObtenerMascara : MonoBehaviour
 
     void InstanciarObjetoDelante()
     {
-        // Determina dirección según la escala del jugador
-        float direccion = transform.localScale.x > 0 ? 1f : -1f;
+        // âœ… Usa la escala del hijo spriteTransform
+        float direccion = playerMovement.spriteTransform.localScale.x > 0 ? 1f : -1f;
 
-        // Cálculo de posición frente al jugador
+        // PosiciÃ³n basada en direcciÃ³n y offset
         Vector3 offset = new Vector3(eje_X * direccion, -eje_Y, 0f);
         Vector3 posicion = transform.position + offset;
 
         // Instancia el prefab
         GameObject instancia = Instantiate(prefab, posicion, Quaternion.identity);
 
-        // Asegura que el prefab mire en la misma dirección que el jugador
+        // Ajusta escala del prefab para que mire hacia donde mira el sprite
         Vector3 escalaPrefab = instancia.transform.localScale;
         escalaPrefab.x = Mathf.Abs(escalaPrefab.x) * direccion;
         instancia.transform.localScale = escalaPrefab;
+
+        Destroy(instancia, 0.5f);
+
+        // Aplica el stun al jugador
+        if (playerMovement != null)
+        {
+            StartCoroutine(StunJugador(playerMovement.stunTime));
+        }
+    }
+
+    IEnumerator StunJugador(float tiempo)
+    {
+        playerMovement.isStunned = true;
+        yield return new WaitForSeconds(tiempo);
+        playerMovement.isStunned = false;
     }
 
     private void OnTriggerEnter2D(Collider2D other)

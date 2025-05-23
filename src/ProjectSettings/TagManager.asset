@@ -56,8 +56,14 @@ TagManager:
   - name: wall
     uniqueID: 1368662649
     locked: 0
+  - name: decoracion
+    uniqueID: 113222065
+    locked: 0
   - name: Ground
     uniqueID: 2723391039
+    locked: 0
+  - name: Decoracion2
+    uniqueID: 1572912841
     locked: 0
   - name: Player
     uniqueID: 2106688423
