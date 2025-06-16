@@ -1,8 +1,8 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyScript : MonoBehaviour
+public class NPCsTrampa : MonoBehaviour
 {
     [Header("Referencias")]
     public GameObject Player; // Asigna el jugador desde el Inspector
@@ -51,6 +51,8 @@ public class EnemyScript : MonoBehaviour
     private bool estaEnElAire = false;
     [Header("Daño por contacto")]
     public bool dañoAlTocar ;
+    [Header("Activación visual al tocar")]
+    public GameObject spriteActivable;
 
     private Rigidbody2D rb;
 
@@ -129,6 +131,16 @@ public class EnemyScript : MonoBehaviour
         if (collision.contacts[0].normal.y > 0.5f)
         {
             estaEnElAire = false;
+        }
+        
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            // Activar sprite si está asignado
+            if (spriteActivable != null)
+            {
+                SpriteRenderer sr = spriteActivable.GetComponent<SpriteRenderer>();
+                if (sr != null) sr.enabled = true;
+            }
         }
     }
 
@@ -218,27 +230,6 @@ public class EnemyScript : MonoBehaviour
         if (Health <= 0)
         {
             Destroy(gameObject);
-        }
-    }
-
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (dañoAlTocar == true && other.CompareTag("Player"))
-        {
-            PlayerMovement player = other.GetComponent<PlayerMovement>();
-            if (player != null)
-            {
-                // Calcular dirección desde el enemigo hacia el jugador
-                Vector2 direccion = (other.transform.position - transform.position).normalized;
-
-                // Forzar dirección horizontal clara (izquierda o derecha)
-                float direccionX = other.transform.position.x > transform.position.x ? 1f : -1f;
-                direccion = new Vector2(direccionX, 1f).normalized;
-                if (dañoAlTocar == true)
-                {
-                  player.HitConKnockback(direccion);
-                }
-            }
         }
     }
 }

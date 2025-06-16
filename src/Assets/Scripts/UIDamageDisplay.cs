@@ -40,4 +40,36 @@ public class UIDamageDisplay : MonoBehaviour
             Destroy(jugador);
         }
     }
+
+    public void RestaurarVidas()
+    {
+        vidas.Clear();
+
+        if (vida1 != null)
+        {
+            vida1.SetActive(true);
+            vidas.Add(vida1);
+        }
+
+        if (vida2 != null)
+        {
+            vida2.SetActive(true);
+            vidas.Add(vida2);
+        }
+
+        if (vida3 != null)
+        {
+            vida3.SetActive(true);
+            vidas.Add(vida3);
+        }
+
+        if (vida4 != null)
+        {
+            vida4.SetActive(true);
+            vidas.Add(vida4);
+        }
+
+        Debug.Log("Vidas visuales restauradas.");
+    }
+
 }

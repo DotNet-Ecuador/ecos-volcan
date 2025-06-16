@@ -7,6 +7,12 @@ TagManager:
   - Background
   - Enemy
   - Mascara
+  - CuartoOculto
+  - SalidaCuartoOculto
+  - Rompible
+  - Bullet
+  - Paredes
+  - Ground
   layers:
   - Default
   - TransparentFX
@@ -18,8 +24,8 @@ TagManager:
   - Platform
   - Bala
   - Vida
-  - 
-  - 
+  - Player
+  - NPCs
   - 
   - 
   - 
@@ -65,8 +71,14 @@ TagManager:
   - name: Decoracion2
     uniqueID: 1572912841
     locked: 0
+  - name: Enemigos
+    uniqueID: 3118485341
+    locked: 0
   - name: Player
     uniqueID: 2106688423
+    locked: 0
+  - name: CuartoOculto
+    uniqueID: 2161477739
     locked: 0
   - name: Poderes
     uniqueID: 6186723
