@@ -49,43 +49,54 @@ public class BulletScript : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
-{
-    if (isEnemyBullet == true)
     {
-        PlayerMovement player = collision.GetComponent<PlayerMovement>();
+        if (isEnemyBullet == true)
+        {
+            PlayerMovement player = collision.GetComponent<PlayerMovement>();
             if (player != null)
             {
                 player.Hit();
                 player.StartCoroutine(player.Invulnerability());
                 DestroyBullet();
-        }
-    }
-    else
-    {
-        // Ignorar si golpea al jugador
-        if (collision.CompareTag("Player"))
-        {
-            return;
-        }
-        // Hacer daño a enemigos
-        EnemyScript enemy = collision.GetComponent<EnemyScript>();
-        if (enemy != null)
-        {
-            enemy.TakeDamage(1);
-
-            HUDManager hud = FindObjectOfType<HUDManager>();
-            if (hud != null)
-            {
-                hud.AddProgress(10);
             }
-
-            DestroyBullet();
+            if (collision.CompareTag("Ground") || collision.CompareTag("Paredes"))
+            {
+                DestroyBullet();
+            }
         }
-        else if (collision.CompareTag("Ground") || collision.CompareTag("Paredes"))
+        else
+        {
+            // Ignorar si golpea al jugador
+            if (collision.CompareTag("Player"))
+            {
+                return;
+            }
+            // Hacer daño a enemigos
+            EnemyScript enemy = collision.GetComponent<EnemyScript>();
+            if (enemy != null)
+            {
+                enemy.TakeDamage(1);
+
+                HUDManager hud = FindObjectOfType<HUDManager>();
+                if (hud != null)
+                {
+                    hud.AddProgress(10);
+                }
+
+                DestroyBullet();
+            }
+            else if (collision.CompareTag("Ground") || collision.CompareTag("Paredes"))
+            {
+                DestroyBullet();
+            }
+        }
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.CompareTag("Ground") || collision.gameObject.CompareTag("Paredes"))
         {
             DestroyBullet();
         }
     }
-}
 
 }

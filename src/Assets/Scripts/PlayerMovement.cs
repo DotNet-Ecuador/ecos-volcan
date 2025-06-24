@@ -28,6 +28,7 @@ public class PlayerMovement : MonoBehaviour
     public float tiempoOscurecimiento = 2.5f;
     public GameObject meleeEffectPrefab;
     [Header("Disparo")]
+    public bool dañoAlTocar ;
     public GameObject bulletPrefab;
     public Transform bulletSpawnPoint;
     public Vector2 bulletOffset = new Vector2(0.5f, 0.5f); // Desfase opcional
@@ -54,7 +55,12 @@ public class PlayerMovement : MonoBehaviour
     public Transform respawnPoint; // Asigna este Empty GameObject desde el Inspector
     public float invulnerabilityTime = 2f;
     private bool isInvulnerable = false;
+    
+        [Header("Comienzo atrapado")]
+    public bool empiezaAtrapado = true;      // ¿Arranca atado a la pared?
+    public float impulsoAlSoltar = 2f;       // Pequeño salto al liberarse
 
+    private float gravedadOriginal;          // Guardamos la gravedad real
 
     void Start()
     {
@@ -67,6 +73,15 @@ public class PlayerMovement : MonoBehaviour
 
             if (globalDarkness != null)
         globalDarkness.SetActive(false); // Ocúltalo al iniciar el juego
+
+          gravedadOriginal = rb2d.gravityScale;
+
+        if (empiezaAtrapado)                 // ← ¡Se despierta colgado!
+        {
+            isStunned        = true;        // No puede moverse
+            rb2d.gravityScale = 0f;         // Sin gravedad = pegado a la pared
+            rb2d.velocity     = Vector2.zero;
+        }
     }
 
     private void FixedUpdate()
@@ -83,6 +98,21 @@ public class PlayerMovement : MonoBehaviour
 
 void Update()
 {
+     /* ① Si está atrapado, vigilamos la combinación
+           tecla X  +  cualquiera de las flechas */
+        if (empiezaAtrapado && isStunned)
+        {
+            bool pulsaX      = Input.GetKeyDown(KeyCode.X);
+            bool pulsaFlecha = Input.GetKey(KeyCode.LeftArrow)  ||
+                               Input.GetKey(KeyCode.RightArrow) ||
+                               Input.GetKey(KeyCode.UpArrow)    ||
+                               Input.GetKey(KeyCode.DownArrow);
+
+            if (pulsaX && pulsaFlecha)
+                Liberarse();
+            return;                         // Mientras, ignoramos el resto
+        }
+
      if (isStunned)
     {
         Horizontal = 0f;
@@ -353,6 +383,7 @@ public void HitConKnockback(Vector2 direccion)
     }
 
     Debug.Log("Jugador golpeado con retroceso mejorado");
+    
 }
 
 
@@ -392,5 +423,14 @@ public void HitConKnockback(Vector2 direccion)
             Gizmos.color = Color.red;
             Gizmos.DrawWireCube(meleeDetectionZone.bounds.center, meleeDetectionZone.bounds.size);
         }
+    }
+
+     private void Liberarse()
+    {
+        isStunned          = false;         // Recupera control
+        empiezaAtrapado    = false;         // No volverá a esta lógica
+        rb2d.gravityScale  = gravedadOriginal;
+        rb2d.velocity      = new Vector2(rb2d.velocity.x, impulsoAlSoltar);
+        // Si quieres un empujón lateral, añade aquí otro componente X
     }
 }

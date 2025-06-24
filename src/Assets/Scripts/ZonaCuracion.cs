@@ -52,7 +52,7 @@ private Coroutine fadeUICoroutine;
             tiempoEnZona   = 0f;
 
             // corutinas principales
-            StartCoroutine(CurarDespuesDeTiempo(2f));
+            StartCoroutine(CurarDespuesDeTiempo(tiempoParaCurar));
             StartCoroutine(ActivarEnemigosDespuesDeTiempo(tiempoParaActivarEnemigos));
 
             // ➜ Amplía la visión a los enemigos especiales

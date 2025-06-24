@@ -82,6 +82,7 @@
     <Compile Include="Assets\Scripts\PlayerMovement.cs" />
     <Compile Include="Assets\Scripts\ZonaCambioEscena.cs" />
     <Compile Include="Assets\Scripts\RoomTrigger.cs" />
+    <Compile Include="Assets\Scripts\EnemigoVolador.cs" />
     <Compile Include="Assets\Scripts\SpikesRiseTrigger.cs" />
     <Compile Include="Assets\Scripts\PuertaSalida.cs" />
     <Compile Include="Assets\Scripts\ObtenerMascara.cs" />
