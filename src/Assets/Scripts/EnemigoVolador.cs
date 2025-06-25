@@ -23,7 +23,7 @@ public class EnemigoVolador : MonoBehaviour
 
     [Header("Apariencia")]
     public bool aimAtPlayer = true;
-
+    public Vector3 offset = new Vector3(1f, 1.5f, 0); // Posición relativa al jugador
     private Rigidbody2D rb;
 
     void Start()
