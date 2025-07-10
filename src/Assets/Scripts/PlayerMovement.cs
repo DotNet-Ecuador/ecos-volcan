@@ -25,6 +25,7 @@ public class PlayerMovement : MonoBehaviour
     public GameObject darkOverlay;      // Asignar en el Inspector
     public GameObject globalDarkness;   // Asignar en el Inspector
     public GameObject globalDarknessRight; // ← Nuevo campo para la oscuridad derecha
+    public GameObject fondoDeCuarto;
     public float tiempoOscurecimiento = 2.5f;
     public GameObject meleeEffectPrefab;
     [Header("Disparo")]
@@ -188,6 +189,9 @@ else if (Input.GetKey(KeyCode.RightArrow))
 
             if (globalDarknessRight != null)
                 globalDarknessRight.SetActive(true); // Oscurece la derecha también
+
+            if (fondoDeCuarto != null)
+                fondoDeCuarto.SetActive(true);
 
             StartCoroutine(DesactivarOscurecimiento());
         }
