@@ -13,9 +13,10 @@ GameObject:
   - component: {fileID: 312968535160313191}
   - component: {fileID: 8540481845155185234}
   - component: {fileID: 2616772410171194532}
+  - component: {fileID: 8707786386452388808}
   m_Layer: 8
   m_Name: BulletPrefab 1
-  m_TagString: Untagged
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -74,7 +75,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 2106688423
-  m_SortingLayer: 7
+  m_SortingLayer: 9
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: fc819bf9341372b4caf08ad69989887a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -163,3 +164,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Speed: 10
   isEnemyBullet: 0
+--- !u!114 &8707786386452388808
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2318771754704899143}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a371a12e48764e24b89a333694196285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parallaxMultiplier: 0.2
+  canRepeat: 0
+  useCustomFirstReposition: 0
+  customRepositionX: 0

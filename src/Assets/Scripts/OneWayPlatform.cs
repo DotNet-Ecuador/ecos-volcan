@@ -2,28 +2,32 @@ using UnityEngine;
 
 public class OneWayPlatform : MonoBehaviour
 {
-    private Collider2D mainCollider; // El collider s�lido de la plataforma
+    private Collider2D mainCollider;
 
     void Start()
     {
-        mainCollider = GetComponent<Collider2D>(); // Obtiene el collider principal
+        mainCollider = GetComponent<Collider2D>();
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerStay2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
         {
-            // Ignorar colisi�n si el jugador toca la plataforma desde abajo
-            Physics2D.IgnoreCollision(other.GetComponent<Collider2D>(), mainCollider, true);
-        }
-    }
+            Rigidbody2D playerRb = other.GetComponent<Rigidbody2D>();
 
-    private void OnTriggerExit2D(Collider2D other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            // Reactivar la colisi�n cuando el jugador deja la plataforma
-            Physics2D.IgnoreCollision(other.GetComponent<Collider2D>(), mainCollider, false);
+            if (playerRb != null)
+            {
+                // Si el jugador está subiendo, ignorar la colisión
+                if (playerRb.velocity.y > 0)
+                {
+                    Physics2D.IgnoreCollision(other.GetComponent<Collider2D>(), mainCollider, true);
+                }
+                else
+                {
+                    // Si el jugador está cayendo o quieto, permitir la colisión
+                    Physics2D.IgnoreCollision(other.GetComponent<Collider2D>(), mainCollider, false);
+                }
+            }
         }
     }
 }

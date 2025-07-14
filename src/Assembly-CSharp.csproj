@@ -62,6 +62,7 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\BulletScript.cs" />
     <Compile Include="Assets\Scripts\DontDestroyOnLoad.cs" />
+    <Compile Include="Assets\Scripts\RecogerScript.cs" />
     <Compile Include="Assets\Scripts\PlayerDash.cs" />
     <Compile Include="Assets\Scripts\ChangeWeapon.cs" />
     <Compile Include="Assets\Scripts\SkyFollow.cs" />
@@ -69,20 +70,35 @@
     <Compile Include="Assets\Scripts\FuegoMascara.cs" />
     <Compile Include="Assets\Scripts\UIDamageDisplay.cs" />
     <Compile Include="Assets\Scripts\FlipCharacter.cs" />
+    <Compile Include="Assets\Scripts\Checkpoint.cs" />
+    <Compile Include="Assets\Scripts\PuertaRompible.cs" />
     <Compile Include="Assets\Scripts\HUDManager.cs" />
+    <Compile Include="Assets\Scripts\ZonaCuracion.cs" />
+    <Compile Include="Assets\Scripts\TrapProjectileTrigger.cs" />
     <Compile Include="Assets\Scripts\Effects\ParrallaxEffect.cs" />
     <Compile Include="Assets\Scripts\PlayerController.cs" />
     <Compile Include="Assets\Scripts\CameraShake.cs" />
+    <Compile Include="Assets\Scripts\PuasScript.cs" />
+    <Compile Include="Assets\Scripts\AliadoVoladorOrbitante.cs" />
+    <Compile Include="Assets\Scripts\Pinchos.cs" />
     <Compile Include="Assets\Scripts\PlayerMovement.cs" />
     <Compile Include="Assets\Scripts\ZonaCambioEscena.cs" />
+    <Compile Include="Assets\Scripts\RoomTrigger.cs" />
+    <Compile Include="Assets\Scripts\EnemigoVolador.cs" />
+    <Compile Include="Assets\Scripts\SpikesRiseTrigger.cs" />
+    <Compile Include="Assets\Scripts\PuertaSalida.cs" />
     <Compile Include="Assets\Scripts\ObtenerMascara.cs" />
     <Compile Include="Assets\Scripts\CheckGround.cs" />
+    <Compile Include="Assets\Scripts\PlayerRespawn.cs" />
+    <Compile Include="Assets\Scripts\NPCsTrampa.cs" />
     <Compile Include="Assets\Scripts\ObjetosDecorativos.cs" />
     <Compile Include="Assets\Scripts\Vacio.cs" />
     <Compile Include="Assets\Scripts\PlataformaDestructible.cs" />
     <Compile Include="Assets\Scripts\EnemyScript.cs" />
     <Compile Include="Assets\Scripts\CameraFollow.cs" />
     <Compile Include="Assets\Scripts\OneWayPlatform.cs" />
+    <Compile Include="Assets\Scripts\InterruptorSalida.cs" />
+    <Compile Include="Assets\Scripts\DropAlMorir.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

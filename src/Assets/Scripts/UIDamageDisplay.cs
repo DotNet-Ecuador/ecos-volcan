@@ -40,4 +40,67 @@ public class UIDamageDisplay : MonoBehaviour
             Destroy(jugador);
         }
     }
+
+    public void RestaurarVidas()
+    {
+        vidas.Clear();
+
+        if (vida1 != null)
+        {
+            vida1.SetActive(true);
+            vidas.Add(vida1);
+        }
+
+        if (vida2 != null)
+        {
+            vida2.SetActive(true);
+            vidas.Add(vida2);
+        }
+
+        if (vida3 != null)
+        {
+            vida3.SetActive(true);
+            vidas.Add(vida3);
+        }
+
+        if (vida4 != null)
+        {
+            vida4.SetActive(true);
+            vidas.Add(vida4);
+        }
+
+        Debug.Log("Vidas visuales restauradas.");
+    }
+    public void RestaurarUnaVida()
+{
+    // Si ya hay 4 vidas, no se hace nada
+    if (vidas.Count >= 4) return;
+
+    // Determinar qué vida fue desactivada y reactivarla en orden
+    if (vida4 != null && !vida4.activeSelf && !vidas.Contains(vida4))
+    {
+        vida4.SetActive(true);
+        vidas.Add(vida4);
+        Debug.Log("Vida 4 restaurada.");
+    }
+    else if (vida3 != null && !vida3.activeSelf && !vidas.Contains(vida3))
+    {
+        vida3.SetActive(true);
+        vidas.Add(vida3);
+        Debug.Log("Vida 3 restaurada.");
+    }
+    else if (vida2 != null && !vida2.activeSelf && !vidas.Contains(vida2))
+    {
+        vida2.SetActive(true);
+        vidas.Add(vida2);
+        Debug.Log("Vida 2 restaurada.");
+    }
+    else if (vida1 != null && !vida1.activeSelf && !vidas.Contains(vida1))
+    {
+        vida1.SetActive(true);
+        vidas.Add(vida1);
+        Debug.Log("Vida 1 restaurada.");
+    }
+}
+
 }
